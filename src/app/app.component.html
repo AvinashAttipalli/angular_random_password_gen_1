@@ -1,29 +1,52 @@
-<h1>Password Generator</h1>
+<div class="container">
+  <div class="columns is-centered">
+    <div class="box column is-one-third">
+      <h1 class="title has-text-centered">Password Generator</h1>
 
-<div>
-  <label> Please provide the length of the password:</label>
-  <input type="number" (input)="onPasswordLength($event.target.value)" />
-</div>
+      <div class="field">
+        <label>Please provide the length of the password:</label>
+        <input class="input" (input)="onPasswordLength($event.target.value)" />
+      </div>
 
-<div>
-  <label>Use Letters</label>
-  <input type="checkbox" (change)="onLettersChange()" />
-</div>
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input (change)="onLettersChange()" type="checkbox" />
+            Use Letters
+          </label>
+        </div>
+      </div>
 
-<div>
-  <label> use Numbers</label>
-  <input type="checkbox" (change)="onNumbersChange()" />
-</div>
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input (change)="onNumbersChange()" type="checkbox" />
+            Use Numbers
+          </label>
+        </div>
+      </div>
 
-<div>
-  <label> Use Special chars</label>
-  <input type="checkbox" (change)="onSpecialCharChange()" />
-</div>
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input (change)="onSpecialCharChange()" type="checkbox" />
+            Use Symbols
+          </label>
+        </div>
+      </div>
+    <div class="buttons" >
+      <button class="button is-success" [disabled]="isButtonEnable()" (click)="onButtonClick()">
+        Generate!
+      </button>
+      <button class="button is-primary" [disabled]="isClearBtnEnable()" (click)="onClearButton()">
+        Clear!
+      </button>
+    </div>
 
-<div>
-  <button [disabled] = "isButtonEnable()" (click)="onButtonClick()">Generate!</button>
-</div>
-
-<div>
-<input [value]="getNewPassword()" />
+      <div class="box" *ngIf="password">
+        <label>Your Password</label>
+        <input class="input" [value]="password" />
+      </div>
+    </div>
+  </div>
 </div>

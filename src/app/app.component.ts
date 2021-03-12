@@ -79,7 +79,17 @@ export class AppComponent {
     return true;
   }
 
+  onClearButton(){
+    this.password = '';
+  }
 
+  isClearBtnEnable(){
+
+    if(this.password.length>0){
+    return false;
+    }
+    return true;
+  }
 
 }
 
