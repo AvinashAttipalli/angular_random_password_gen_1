@@ -41,18 +41,45 @@ export class AppComponent {
   }
 
   onButtonClick() {
-    console.clear();
-    console.log("letters: " + this.useLetters);
-    console.log("numbers: " + this.useNumbers);
-    console.log("specialChars: " + this.specialChars);
+    let generatedPassword = '';
+    let includeTypes ='';
+    const letters = "abcdefghijklmniopqrstuvwxyz";
+    const numbers = "1234567890";
+    const specialKeys = "!@#$%^&*()";
+    
+    if(this.useLetters){
+      includeTypes +=letters;
+    }
 
-    console.log(`Length of the password: ${this.length}`);
+    if(this.useNumbers){
+      includeTypes +=numbers;
+    }
 
-    this.password = "My New Password!";
+    if(this.specialChars){
+      includeTypes +=specialKeys;
+    }
+
+    for(let i=0; i<this.length; i++){
+      const index = Math.floor(Math.random()*includeTypes.length);
+      generatedPassword +=includeTypes[index];
+    }
+
+    this.password = generatedPassword;
+
   }
 
   getNewPassword() {
     return this.password;
   }
+
+  isButtonEnable(){
+    if(this.length && (this.useLetters || this.useNumbers || this.specialChars)){
+      return false;
+    }
+    return true;
+  }
+
+
+
 }
 

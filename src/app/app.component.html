@@ -2,7 +2,7 @@
 
 <div>
   <label> Please provide the length of the password:</label>
-  <input type="text" (input)="onPasswordLength($event.target.value)" />
+  <input type="number" (input)="onPasswordLength($event.target.value)" />
 </div>
 
 <div>
@@ -21,7 +21,9 @@
 </div>
 
 <div>
-  <button (click)="onButtonClick()">Generate!</button>
-  <input [value]="getNewPassword()" />
+  <button [disabled] = "isButtonEnable()" (click)="onButtonClick()">Generate!</button>
 </div>
 
+<div>
+<input [value]="getNewPassword()" />
+</div>
